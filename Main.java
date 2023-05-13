@@ -1,24 +1,23 @@
-public class Main{
-    MyHashTable<MyTestingClass, Student> table = new MyHashTable<>();
+public class Main {
     public static void main(String[] args) {
-        MyHashTable<MyTestingClass, Student> table = new MyHashTable<>();
+        BST<Integer, String> bst = new BST<>();
 
-        Random rand = new Random();
-        for (int i = 0; i < 10000; i++) {
-            MyTestingClass key = new MyTestingClass(rand.nextInt(1000));
-            Student value = new Student("Student" + i);
-            table.put(key, value);
-        }
+        bst.put(5, "Five");
+        bst.put(2, "Two");
+        bst.put(8, "Eight");
+        bst.put(1, "One");
+        bst.put(3, "Three");
 
-        for (int i = 0; i < table.chainArray.length; i++) {
-            int count = 0;
-            MyHashTable.HashNode<MyTestingClass, Student> node = table.chainArray[i];
-            while (node != null) {
-                count++;
-                node = node.next;
-            }
-            System.out.println("Chain " + i + " contains " + count + " elements.");
+        System.out.println(bst.get(5)); // Output: Five
+        System.out.println(bst.get(4)); // Output: null
+
+        bst.delete(2);
+
+        System.out.println(bst.get(2)); // Output: null
+
+        for (Integer key : bst.iterator()) {
+            System.out.println(key);
         }
     }
 
-};
+}
